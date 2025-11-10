@@ -144,6 +144,13 @@ ENV/
 env.bak/
 venv.bak/
 
+# VS Code workspace settings
+.vscode/
+
+# Local environment files
+*.env
+.env.*
+
 # Spyder project settings
 .spyderproject
 .spyproject

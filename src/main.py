@@ -3,7 +3,7 @@ from ollama import Client
 import os
 
 client = Client(host='http://localhost:11434')
-"""
+
 response = client.chat(model='mistral:7b-instruct', messages=[
   {
     'role': 'user',
@@ -12,11 +12,11 @@ response = client.chat(model='mistral:7b-instruct', messages=[
 ])
 
 print(response.message.content)
+
+
 """
-
-
 def embed(text:str):
-    response = client.embed(model='mistral', input=text)
+    response = client.embed(model='embeddinggemma:300m', input=text)
     return response['embeddings'][0]
 
 index = {}
@@ -32,5 +32,7 @@ def search(query: str, index: dict):
     ]
     return sorted(results, reverse=True)
 
-print(search("oiseau", index))
-
+results = search("oiseau", index)
+for score, fname in results[:5]:
+    print(f"{fname}: {score:.3f}")
+"""
